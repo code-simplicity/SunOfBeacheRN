@@ -7,8 +7,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { Text, StyleSheet, SafeAreaView, View, Button } from 'react-native';
+import { Text, StyleSheet, View, Button } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'; // 安全区域的插件
 
 function HomeScreen({ navigation }) {
   return (
@@ -36,7 +37,7 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
     <>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaProvider style={styles.container}>
         <NavigationContainer>
           <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -56,11 +57,11 @@ const App = () => {
               tabBarInactiveTintColor: 'gray',
             })}
           >
-            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarBadge: 10 }} />
             <Tab.Screen name="Login" component={LoginScreen} />
           </Tab.Navigator>
         </NavigationContainer>
-      </SafeAreaView>
+      </SafeAreaProvider>
     </>
   );
 };
