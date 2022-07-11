@@ -1,82 +1,16 @@
-/**
- * App的入口文件，这里作为渲染系统入口和登录的一个占位
- * @format
+/*
+ * @Author: bugdr
+ * @Date: 2022-07-09 22:07:01
+ * @LastEditors: bugdr
+ * @LastEditTime: 2022-07-11 14:09:19
+ * @FilePath: \SunOfBeacheRN\App.tsx
+ * @Description:App的入口文件，这里作为渲染系统入口和登录的一个占位
  */
-
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { Text, StyleSheet, View, Button } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'; // 安全区域的插件
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>首页</Text>
-      <Button title="去登录页面" onPress={() => navigation.navigate('Login')} />
-    </View>
-  );
-}
-
-function LoginScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>登录页面</Text>
-      <Button title="去首页" onPress={() => navigation.navigate('Home')} />
-    </View>
-  );
-}
-
-// 创建一个路由栈
-const Stack = createNativeStackNavigator();
-// 底部导航栏
-const Tab = createBottomTabNavigator();
+import Navigation from './src/navigation';
 
 const App = () => {
-  return (
-    <>
-      <SafeAreaProvider style={styles.container}>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
-
-                if (route.name === 'Home') {
-                  iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
-                } else if (route.name === 'Login') {
-                  iconName = focused ? 'ios-list-box' : 'ios-list';
-                }
-
-                // You can return any component that you like here!
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-              tabBarActiveTintColor: 'tomato',
-              tabBarInactiveTintColor: 'gray',
-            })}
-          >
-            <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarBadge: 10 }} />
-            <Tab.Screen name="Login" component={LoginScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </>
-  );
+  return <Navigation />;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  baseText: {
-    fontFamily: 'Cochin',
-  },
-  titleText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
 
 export default App;
