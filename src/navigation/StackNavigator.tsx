@@ -9,7 +9,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigator from './BottomTabNavigator';
-import Settings from '../views/Settings';
+import Settings from '@src/screens/Settings';
 
 const Stack = createNativeStackNavigator();
 
