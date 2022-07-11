@@ -15,12 +15,10 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <>
-      <Stack.Navigator initialRouteName="首页">
-        <Stack.Screen name="首页" component={BottomTabNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="设置" component={Settings} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </>
+    <Stack.Navigator initialRouteName="Root">
+      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="设置" component={Settings} />
+    </Stack.Navigator>
   );
 };
 

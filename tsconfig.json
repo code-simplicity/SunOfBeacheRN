@@ -22,15 +22,19 @@
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "resolveJsonModule": true,
+    "rootDir": "./",
     "baseUrl": ".",
     "paths": {
       "@src/*": [
         "src/*"
       ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
       "@components/": [
         "src/components/*"
       ],
-      "#/*": [
+      "@types/*": [
         "types/*"
       ]
     },
