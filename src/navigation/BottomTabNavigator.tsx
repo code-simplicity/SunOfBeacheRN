@@ -2,7 +2,7 @@
  * @Author: bugdr
  * @Date: 2022-07-11 12:30:23
  * @LastEditors: bugdr
- * @LastEditTime: 2022-07-11 13:34:59
+ * @LastEditTime: 2022-07-12 08:40:49
  * @FilePath: \SunOfBeacheRN\src\navigation\BottomTabNavigator.tsx
  * @Description:标签底部导航器
  */
@@ -20,52 +20,76 @@ import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 const BottomTab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  // 这里抽出来作为一个独立的函数
+  const getTabBarIcon = (route: any, focused: boolean, color: string, size: any) => {
+    if (route.name === 'Home') {
+      return getHomeBarIcon();
+    }
+    if (route.name === 'FishCakes') {
+      return getFishCakesBarIcon();
+    }
+    if (route.name === 'RoundQuestion') {
+      return getRoundQuestionBarIcon();
+    }
+    if (route.name === 'College') {
+      return getCollegeBarIcon();
+    }
+    if (route.name === 'Mine') {
+      return getMineBarIcon();
+    }
+    // 获取首页
+    function getHomeBarIcon() {
+      return (
+        <MaterialIcons
+          name={focused ? 'home-lightbulb' : 'home-lightbulb-outline'}
+          size={size}
+          color={color}
+        />
+      );
+    }
+    // 获取摸鱼
+    function getFishCakesBarIcon() {
+      return (
+        <MaterialIcons name={focused ? 'fishbowl' : 'fishbowl-outline'} size={size} color={color} />
+      );
+    }
+    // 获取问答
+    function getRoundQuestionBarIcon() {
+      return (
+        <MaterialIcons
+          name={focused ? 'chat-question' : 'chat-question-outline'}
+          size={size}
+          color={color}
+        />
+      );
+    }
+    // 获取学院
+    function getCollegeBarIcon() {
+      return (
+        <Ionicons
+          name={focused ? 'ios-school-sharp' : 'ios-school-outline'}
+          size={size}
+          color={color}
+        />
+      );
+    }
+    // 获取我的
+    function getMineBarIcon() {
+      return (
+        <FontAwesomeIcons
+          name={focused ? 'user-circle' : 'user-circle-o'}
+          size={size}
+          color={color}
+        />
+      );
+    }
+  };
   return (
     <BottomTab.Navigator
-      initialRouteName="首页"
+      initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          if (route.name === 'Home') {
-            return (
-              <MaterialIcons
-                name={focused ? 'home-lightbulb' : 'home-lightbulb-outline'}
-                size={size}
-                color={color}
-              />
-            );
-          } else if (route.name === 'FishCakes') {
-            return (
-              <MaterialIcons
-                name={focused ? 'fishbowl' : 'fishbowl-outline'}
-                size={size}
-                color={color}
-              />
-            );
-          } else if (route.name === 'RoundQuestion') {
-            return (
-              <MaterialIcons
-                name={focused ? 'chat-question' : 'chat-question-outline'}
-                size={size}
-                color={color}
-              />
-            );
-          } else if (route.name === 'College') {
-            return (
-              <Ionicons
-                name={focused ? 'ios-school-sharp' : 'ios-school-outline'}
-                size={size}
-                color={color}
-              />
-            );
-          } else if (route.name === 'Mine') {
-            return (
-              <FontAwesomeIcons
-                name={focused ? 'user-circle' : 'user-circle-o'}
-                size={size}
-                color={color}
-              />
-            );
-          }
+          return getTabBarIcon(route, focused, color, size);
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
