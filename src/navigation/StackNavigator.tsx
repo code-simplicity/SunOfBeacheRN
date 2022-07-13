@@ -2,7 +2,7 @@
  * @Author: bugdr
  * @Date: 2022-07-11 12:30:53
  * @LastEditors: bugdr
- * @LastEditTime: 2022-07-12 10:29:16
+ * @LastEditTime: 2022-07-13 13:16:02
  * @FilePath: \SunOfBeacheRN\src\navigation\StackNavigator.tsx
  * @Description:栈导航器，包括登录这些
  */
@@ -10,7 +10,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigator from './BottomTabNavigator';
 import Settings from '@src/screens/Settings';
-import Sign from '@src/screens/Auth/Sign';
+import Auth from '@src/screens/Auth';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +26,7 @@ const StackNavigator = () => {
           gestureEnabled: true,
           headerShown: false,
         }}
-        component={Sign}
+        component={Auth}
       />
     </Stack.Navigator>
   );
