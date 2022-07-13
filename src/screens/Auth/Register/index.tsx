@@ -2,11 +2,22 @@
  * @Author: bugdr
  * @Date: 2022-07-13 13:21:24
  * @LastEditors: bugdr
- * @LastEditTime: 2022-07-13 14:24:00
+ * @LastEditTime: 2022-07-13 14:35:05
  * @FilePath: \SunOfBeacheRN\src\screens\Auth\Register\index.tsx
  * @Description:注册用户
  */
-import { Box, Button, Divider, FormControl, HStack, Icon, Input, Text, VStack } from 'native-base';
+import {
+  Box,
+  Button,
+  Checkbox,
+  Divider,
+  FormControl,
+  HStack,
+  Icon,
+  Input,
+  Text,
+  VStack,
+} from 'native-base';
 import React, { useState } from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -104,7 +115,18 @@ const Register = (props: any) => {
             }
           />
         </FormControl>
-
+        <FormControl>
+          <Checkbox
+            shadow={2}
+            value="test"
+            accessibilityLabel="This is a dummy checkbox"
+            defaultIsChecked
+          >
+            <Text fontSize="xs">我已阅读并同意</Text>
+            <Text fontSize="xs">《阳光沙滩》</Text>
+            <Text fontSize="xs">《个人信息指引保护》</Text>
+          </Checkbox>
+        </FormControl>
         <Button w="100%" mt="2" colorScheme="indigo">
           注册
         </Button>

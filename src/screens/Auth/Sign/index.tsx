@@ -2,12 +2,11 @@
  * @Author: bugdr
  * @Date: 2022-07-12 10:07:05
  * @LastEditors: bugdr
- * @LastEditTime: 2022-07-13 14:23:14
+ * @LastEditTime: 2022-07-13 16:57:06
  * @FilePath: \SunOfBeacheRN\src\screens\Auth\Sign\index.tsx
  * @Description:登录页面
  */
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
 import {
   Text,
   Input,
@@ -20,6 +19,7 @@ import {
   Divider,
 } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 const Sign = (props: any) => {
   const { setSwitchFormStatus, setSwitchFormTitle } = props;
   const handleClickRegister = () => {
@@ -109,15 +109,15 @@ const Sign = (props: any) => {
             忘记密码
           </Button>
         </HStack>
-        <VStack w="100%" space={2} alignItems="center" pt="20">
+        <VStack w="100%" space={2} alignItems="center" pt="16">
           <Text>其他方式登录</Text>
           <Divider bg="emerald.600" thickness="1" />
-          <HStack>
-            <Text>微信</Text>
+          <HStack space={4}>
+            <AntDesign name="github" size={32} />
             <Divider bg="emerald.500" thickness="2" mx="2" orientation="vertical" />
-            <Text>GIthub</Text>
+            <AntDesign name="wechat" size={32} />
             <Divider bg="amber.500" thickness="2" mx="2" orientation="vertical" />
-            <Text>支付宝</Text>
+            <AntDesign name="alipay-circle" size={32} />
           </HStack>
         </VStack>
       </VStack>
@@ -125,10 +125,4 @@ const Sign = (props: any) => {
   );
 };
 
-// 自定义样式
-const styles = StyleSheet.create({
-  signForm: {
-    width: '100%',
-  },
-});
 export default Sign;
