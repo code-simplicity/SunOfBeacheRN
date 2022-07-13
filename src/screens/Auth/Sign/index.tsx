@@ -6,7 +6,7 @@
  * @FilePath: \SunOfBeacheRN\src\screens\Auth\Sign\index.tsx
  * @Description:登录页面
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   Input,
@@ -20,6 +20,7 @@ import {
 } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import useFetchData from '@src/hooks/useFetchData';
 const Sign = (props: any) => {
   const { setSwitchFormStatus, setSwitchFormTitle } = props;
   const handleClickRegister = () => {
@@ -32,6 +33,7 @@ const Sign = (props: any) => {
   };
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+
   return (
     <>
       <VStack space={3} px="8" alignItems="center" w="100%">

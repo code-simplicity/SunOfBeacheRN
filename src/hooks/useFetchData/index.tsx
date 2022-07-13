@@ -40,7 +40,8 @@ function useFetchData<T = any>(url: string, options?: IRequestOptions): IFetchRe
     request(url, options || {}, abortControllerRef.current)
       .then((res) => {
         const { code, message, data } = res as IResponseData;
-        if (code !== 0) {
+        // 这里后期做处理，判断返回的code，不同code做不同的提示就行
+        if (code !== 10000) {
           console.log('Error Msg: ', message);
           throw new Error(message);
         }
@@ -53,7 +54,7 @@ function useFetchData<T = any>(url: string, options?: IRequestOptions): IFetchRe
         setLoading(false);
       });
     return () => destory();
-  }, [url, options]);
+  }, [url, JSON.stringify(options)]);
 
   return { loading, data: result, error };
 }

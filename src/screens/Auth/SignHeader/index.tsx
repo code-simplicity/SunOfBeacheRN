@@ -9,7 +9,8 @@
 import React from 'react';
 import { Center, Image } from 'native-base';
 
-const SignHeader = () => {
+const SignHeader = (props: any) => {
+  const { data } = props;
   return (
     <Center mb="6">
       <Image
@@ -17,10 +18,10 @@ const SignHeader = () => {
         alt="fallback text"
         borderRadius={100}
         source={{
-          uri: 'https://www.w3schools.com/css/img_lights.jpg',
+          uri: data,
         }}
         fallbackSource={{
-          uri: 'https://www.w3schools.com/css/img_lights.jpg',
+          uri: data,
         }}
       />
     </Center>

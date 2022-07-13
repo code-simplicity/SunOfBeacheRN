@@ -13,6 +13,7 @@ import SignHeader from './SignHeader';
 import Sign from './Sign';
 import ForgetPassword from './ForgetPassword';
 import Register from './Register';
+import useFetchData from '@src/hooks/useFetchData';
 
 const Auth = () => {
   // 切换不同的表单
@@ -40,10 +41,15 @@ const Auth = () => {
       );
     }
   };
+  // TODO:明天完成fetch的后期编写和登录逻辑的编写
+  // 获取头像
+  const { data, loading } = useFetchData('https://api.sunofbeaches.com/uc/user/avatar/13132053657');
+  console.log('data', data);
+  console.log('loading', loading);
   return (
     <>
       <Box style={styles.container}>
-        <SignHeader />
+        <SignHeader data={data} />
         <Heading>{switchFormTitle}</Heading>
         {handleSwitchFormStatus()}
       </Box>
