@@ -43,7 +43,7 @@ const Auth = () => {
   };
   // TODO:明天完成fetch的后期编写和登录逻辑的编写
   // 获取头像
-  const { data, loading } = useFetchData('https://api.sunofbeaches.com/uc/user/avatar/13132053657');
+  const { data, loading } = useFetchData('/uc/user/avatar/13132053657');
   console.log('data', data);
   console.log('loading', loading);
   return (

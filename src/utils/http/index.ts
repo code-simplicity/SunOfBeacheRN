@@ -6,10 +6,10 @@
  * @FilePath: \SunOfBeacheRN\src\utils\http\Fetch.ts
  * @Description:fetch返回的实例
  */
-
 import { useHToast } from '@src/hooks/useHToast';
 import qs from 'qs';
 import { filterObject } from '../index';
+import { Config } from './config';
 import { IMethods } from './enum';
 
 // 自定义请求错误接口类型
@@ -124,7 +124,7 @@ class HttpFetch implements IHttpInterface {
     // 正式发送
     try {
       const res = await Promise.race([
-        fetch(url, opts),
+        fetch(Config.API_URL + url, opts),
         new Promise<any>((_, reject) => {
           setTimeout(() => {
             return reject({

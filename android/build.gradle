@@ -51,3 +51,15 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
     }
 }
+
+// project.ext.envConfigFiles = [
+//     dev: ".env.development"
+// ]
+
+// defaultConfig {
+//     // ... other
+//     resValue "string", "build_config_package", "com.frontend"
+//     // ... other
+// }
+
+// apply from: project(':react-native-config').projectDir.getPath() +"/dotenv.gradle"
