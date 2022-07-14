@@ -2,11 +2,10 @@
  * @Author: bugdr
  * @Date: 2022-07-13 21:42:29
  * @LastEditors: bugdr
- * @LastEditTime: 2022-07-13 21:56:50
+ * @LastEditTime: 2022-07-14 07:45:15
  * @FilePath: \SunOfBeacheRN\src\hooks\useFetchData\index.tsx
  * @Description:接口数据封装的hooks
  */
-
 import request, { ICustomRequestError, IRequestOptions, IResponseData } from '@src/utils/http';
 import { useEffect, useRef, useState } from 'react';
 
