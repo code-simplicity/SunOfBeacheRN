@@ -6,7 +6,7 @@
  * @FilePath: \SunOfBeacheRN\src\screens\Auth\Sign\index.tsx
  * @Description:登录页面
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Text,
   Input,
@@ -17,13 +17,16 @@ import {
   HStack,
   Checkbox,
   Divider,
+  WarningOutlineIcon,
 } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useFetchData from '@src/hooks/useFetchData';
 import VerificationCode from '@src/components/VerificationCode';
+import { useForm, Controller } from 'react-hook-form';
+
 const Sign = (props: any) => {
-  const { setSwitchFormStatus, setSwitchFormTitle } = props;
+  const { setSwitchFormStatus, setSwitchFormTitle, setUserPhone } = props;
   const handleClickRegister = () => {
     setSwitchFormStatus('register');
     setSwitchFormTitle('用户注册');
@@ -35,23 +38,60 @@ const Sign = (props: any) => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
+  // 当手机输入框内容发生改变时候触发头像接口
+  const handleOnChangePhone = (value: string) => {
+    setUserPhone(value);
+  };
+
+  // 表单验证
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      userName: '',
+      lastName: '',
+    },
+  });
+
+  const onSubmit = (data) => {
+    console.log('formData', data);
+  };
+
   return (
     <>
       <VStack space={3} px="8" alignItems="center" w="100%">
         <FormControl>
-          <Input
-            placeholder="请输入你的独一无二的用户名"
-            variant="filled"
-            size="lg"
-            InputLeftElement={
-              <Icon
-                as={<MaterialIcons name="phonelink-lock" />}
-                size={5}
-                ml="2"
-                color="muted.400"
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            name="userName"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                value={value}
+                placeholder="请输入你的独一无二的用户名"
+                variant="filled"
+                size="lg"
+                InputLeftElement={
+                  <Icon
+                    as={<MaterialIcons name="phonelink-lock" />}
+                    size={5}
+                    ml="2"
+                    color="muted.400"
+                  />
+                }
+                onChangeText={handleOnChangePhone}
               />
-            }
+            )}
           />
+          {errors.userName ? (
+            <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+              <Text>手机号码必须填写</Text>
+            </FormControl.ErrorMessage>
+          ) : null}
         </FormControl>
         <FormControl>
           <Input
@@ -99,7 +139,7 @@ const Sign = (props: any) => {
             <Text fontSize="xs">《个人信息指引保护》</Text>
           </Checkbox>
         </FormControl>
-        <Button w="100%" mt="2" colorScheme="indigo">
+        <Button w="100%" mt="2" colorScheme="indigo" onPress={handleSubmit(onSubmit)}>
           登录
         </Button>
         <HStack w="100%" alignItems="center" justifyContent="space-between">

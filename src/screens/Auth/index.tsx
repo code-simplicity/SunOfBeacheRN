@@ -6,7 +6,7 @@
  * @FilePath: \SunOfBeacheRN\src\screens\Auth\index.tsx
  * @Description:
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Heading } from 'native-base';
 import { StyleSheet } from 'react-native';
 import SignHeader from './SignHeader';
@@ -23,13 +23,18 @@ const Auth = () => {
   const handleSwitchFormStatus = () => {
     if (switchFormStatus === 'sign') {
       return (
-        <Sign setSwitchFormStatus={setSwitchFormStatus} setSwitchFormTitle={setSwitchFormTitle} />
+        <Sign
+          setSwitchFormStatus={setSwitchFormStatus}
+          setSwitchFormTitle={setSwitchFormTitle}
+          setUserPhone={setUserPhone}
+        />
       );
     } else if (switchFormStatus === 'forgetPassword') {
       return (
         <ForgetPassword
           setSwitchFormStatus={setSwitchFormStatus}
           setSwitchFormTitle={setSwitchFormTitle}
+          setUserPhone={setUserPhone}
         />
       );
     } else if (switchFormStatus === 'register') {
@@ -37,15 +42,16 @@ const Auth = () => {
         <Register
           setSwitchFormStatus={setSwitchFormStatus}
           setSwitchFormTitle={setSwitchFormTitle}
+          setUserPhone={setUserPhone}
         />
       );
     }
   };
-  // TODO:明天完成fetch的后期编写和登录逻辑的编写
-  // 获取头像
-  const { data, loading } = useFetchData('/uc/user/avatar/13132053657');
-  console.log('data', data);
-  console.log('loading', loading);
+  // 获取头像,通过输入手机号码获取，通过回调函数触发
+  const [userPhone, setUserPhone] = useState();
+  const { data, loading } = useFetchData(`/uc/user/avatar/${userPhone}`);
+  console.log('data :>> ', data);
+  console.log('userPhone :>> ', userPhone);
   return (
     <>
       <Box style={styles.container}>
