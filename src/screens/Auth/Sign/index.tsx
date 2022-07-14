@@ -21,6 +21,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useFetchData from '@src/hooks/useFetchData';
+import VerificationCode from '@src/components/VerificationCode';
 const Sign = (props: any) => {
   const { setSwitchFormStatus, setSwitchFormTitle } = props;
   const handleClickRegister = () => {
@@ -73,15 +74,18 @@ const Sign = (props: any) => {
           />
         </FormControl>
         <FormControl>
-          <Input
-            placeholder="请输入图灵验证码"
-            variant="filled"
-            size="lg"
-            InputLeftElement={
-              <Icon as={<MaterialIcons name="verified" />} size={5} ml="2" color="muted.400" />
-            }
-            InputRightElement={<Text>图灵验证码</Text>}
-          />
+          <HStack space={4}>
+            <Input
+              flex="1"
+              placeholder="请输入图灵验证码"
+              variant="filled"
+              size="lg"
+              InputLeftElement={
+                <Icon as={<MaterialIcons name="verified" />} size={5} ml="2" color="muted.400" />
+              }
+            />
+            <VerificationCode />
+          </HStack>
         </FormControl>
         <FormControl>
           <Checkbox
@@ -113,13 +117,12 @@ const Sign = (props: any) => {
         </HStack>
         <VStack w="100%" space={2} alignItems="center" pt="16">
           <Text>其他方式登录</Text>
-          <Divider bg="emerald.600" thickness="1" />
           <HStack space={4}>
-            <AntDesign name="github" size={32} />
+            <AntDesign name="github" size={28} />
             <Divider bg="emerald.500" thickness="2" mx="2" orientation="vertical" />
-            <AntDesign name="wechat" size={32} />
+            <AntDesign name="wechat" size={28} />
             <Divider bg="amber.500" thickness="2" mx="2" orientation="vertical" />
-            <AntDesign name="alipay-circle" size={32} />
+            <AntDesign name="alipay-circle" size={28} />
           </HStack>
         </VStack>
       </VStack>

@@ -6,6 +6,7 @@
  * @FilePath: \SunOfBeacheRN\src\screens\Auth\ForgetPassword\index.tsx
  * @Description:忘记密码
  */
+import VerificationCode from '@src/components/VerificationCode';
 import { Button, FormControl, HStack, Icon, Input, Text, VStack } from 'native-base';
 import React, { useState } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -24,15 +25,18 @@ const ForgetPassword = (props: any) => {
     <>
       <VStack space={3} px="8" alignItems="center" w="100%">
         <FormControl>
-          <Input
-            placeholder="请输入图灵验证码"
-            variant="filled"
-            size="lg"
-            InputLeftElement={
-              <Icon as={<MaterialIcons name="verified" />} size={5} ml="2" color="muted.400" />
-            }
-            InputRightElement={<Text>图灵验证码</Text>}
-          />
+          <HStack space={4}>
+            <Input
+              flex="1"
+              placeholder="请输入图灵验证码"
+              variant="filled"
+              size="lg"
+              InputLeftElement={
+                <Icon as={<MaterialIcons name="verified" />} size={5} ml="2" color="muted.400" />
+              }
+            />
+            <VerificationCode />
+          </HStack>
         </FormControl>
         <FormControl>
           <Input

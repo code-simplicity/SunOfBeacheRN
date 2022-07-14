@@ -6,6 +6,7 @@
  * @FilePath: \SunOfBeacheRN\src\screens\Auth\Register\index.tsx
  * @Description:注册用户
  */
+import VerificationCode from '@src/components/VerificationCode';
 import {
   Box,
   Button,
@@ -38,15 +39,18 @@ const Register = (props: any) => {
     <>
       <VStack space={3} px="8" alignItems="center" w="100%">
         <FormControl>
-          <Input
-            placeholder="请输入图灵验证码"
-            variant="filled"
-            size="lg"
-            InputLeftElement={
-              <Icon as={<MaterialIcons name="verified" />} size={5} ml="2" color="muted.400" />
-            }
-            InputRightElement={<Text>图灵验证码</Text>}
-          />
+          <HStack space={4}>
+            <Input
+              flex="1"
+              placeholder="请输入图灵验证码"
+              variant="filled"
+              size="lg"
+              InputLeftElement={
+                <Icon as={<MaterialIcons name="verified" />} size={5} ml="2" color="muted.400" />
+              }
+            />
+            <VerificationCode />
+          </HStack>
         </FormControl>
         <FormControl>
           <Input
@@ -61,7 +65,7 @@ const Register = (props: any) => {
                 color="muted.400"
               />
             }
-            InputRightElement={<Text>获取手机验证码</Text>}
+            InputRightElement={<Button>获取验证码</Button>}
           />
         </FormControl>
         <FormControl>
